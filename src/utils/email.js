@@ -6,7 +6,7 @@ const sendVerificationEmail = async (email, token) => {
   
   await resend.emails.send({
     from: 'UTP Market <onboarding@resend.dev>',
-    to: email,
+    to: 'alexhuang99999@gmail.com',
     subject: '✅ Verifica tu cuenta - UTP Market',
     html: `
       <div style="font-family: Arial; max-width: 500px; margin: 0 auto;">
