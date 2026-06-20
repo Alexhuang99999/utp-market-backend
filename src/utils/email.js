@@ -1,20 +1,11 @@
-const nodemailer = require('nodemailer')
-
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-})
+const { Resend } = require('resend')
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 const sendVerificationEmail = async (email, token) => {
   const verifyUrl = `${process.env.FRONTEND_URL}/verify-email?token=${token}`
   
-  await transporter.sendMail({
-    from: `"UTP Market" <${process.env.EMAIL_USER}>`,
+  await resend.emails.send({
+    from: 'UTP Market <onboarding@resend.dev>',
     to: email,
     subject: '✅ Verifica tu cuenta - UTP Market',
     html: `
